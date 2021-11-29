@@ -1,5 +1,5 @@
 # Apex-mprt-importer-for-Blender
-Import Apex legends mprt files exported from Legion
+Import Apex legends mprt files exported from Legion.  [*REQUIRES CAST IMPORTER*](https://github.com/dtzxporter/cast)
 
 # Usage:
 1. Use a VPK extracter to extract the map BSP from vpk. (Eg. [Titanfall_VPKTool by: Wanty5883](https://github.com/Wanty5883/Titanfall2/blob/master/tools/Titanfall_VPKTool3.4_Portable.zip))
