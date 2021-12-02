@@ -82,7 +82,7 @@ class MapImport_OP(Operator):
                 AssetCollection.children.link(collections[AName])
                 bpy.context.view_layer.active_layer_collection = bpy.context.view_layer.layer_collection.children[AssetCollection.name].children[(collections[AName]).name]
                 try:
-                    bpy.ops.import_scene.cast(filepath = (bpy.data.scenes[0].props.model_directory + "%s//%s_LOD0.cast" % (AName,AName)))
+                    bpy.ops.import_scene.cast(filepath = bpy.path.abspath(bpy.data.scenes[0].props.model_directory + "%s//%s_LOD0.cast" % (AName,AName)))
                 except:
                     print('Error loading %s.cast' % (AName))
 
