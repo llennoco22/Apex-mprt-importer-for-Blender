@@ -69,22 +69,23 @@ class MapImport_OP(Operator):
             ObjectList=(list(dict.fromkeys(NameList)))
             AssetCollection = bpy.data.collections.new("Assets")
             bpy.context.scene.collection.children.link(AssetCollection)
-
+            bpy.context.view_layer.active_layer_collection = bpy.context.view_layer.layer_collection.children[AssetCollection.name]
+            collections = {}
             print("\n")
 
-            collections = {}
+
 
             for i in range(len(ObjectList)):
                 AName = ObjectList[i]
                 progress = (i/((len(ObjectList))-1))
                 sys.stdout.write("Importing... ({0}%) {1}...\n".format(round(progress*100,2),AName))
-                collections[AName] = bpy.data.collections.new(AName)
-                AssetCollection.children.link(collections[AName])
-                bpy.context.view_layer.active_layer_collection = bpy.context.view_layer.layer_collection.children[AssetCollection.name].children[(collections[AName]).name]
                 try:
                     bpy.ops.import_scene.cast(filepath = bpy.path.abspath(bpy.data.scenes[0].props.model_directory + "%s//%s_LOD0.cast" % (AName,AName)))
                 except:
                     print('Error loading %s.cast' % (AName))
+                    bpy.data.collections.new(AName)
+                    continue
+                collections[AName] = bpy.context.view_layer.active_layer_collection.collection.children[-1]
 
 
 
