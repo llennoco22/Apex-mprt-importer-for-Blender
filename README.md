@@ -2,6 +2,7 @@
 Import Apex legends mprt files exported from Legion.  
 
 # [*REQUIRES CAST IMPORTER*](https://github.com/dtzxporter/cast)
+[Video tutorial](https://drive.google.com/file/d/1ApByE0p5MzVV95dUsQ0seciCA7Cl5WFZ/view?usp=sharing)
 
 # Usage:
 1. Use a VPK extracter to extract the map BSP from vpk. (Eg. [Titanfall_VPKTool](https://github.com/Wanty5883/Titanfall2/blob/master/tools/Titanfall_VPKTool3.4_Portable.zip))
