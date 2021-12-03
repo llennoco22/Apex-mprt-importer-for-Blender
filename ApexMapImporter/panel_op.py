@@ -19,18 +19,16 @@ class MapImport_OP(Operator):
         return bytes.decode("utf-8")
 
     def execute(self, context):
-        if bpy.context.scene.props.model_directory != '':
+        user_prefs = context.preferences.addons[__package__].preferences
+        if user_prefs.model_path != '':
             try:
-                file = open(bpy.path.abspath(bpy.context.scene.props.mprt_directory), "rb")
+                file = open(bpy.path.abspath(user_prefs.mprt_file), "rb")
             except:
                 self.report({"ERROR"}, "Invalid directory.")
                 return {'CANCELLED'}
             header = struct.unpack("3I", file.read(0xC))
             if header[0] != 0x7472706D:
                 self.report({"ERROR"}, "Invalid file.")
-                return {'CANCELLED'}
-            if header[1] != 3:
-                self.report({"ERROR"}, "Wrong version. Re-Export with the newest version of Legion.")
                 return {'CANCELLED'}
 
             scene = bpy.context.scene.props
@@ -80,11 +78,11 @@ class MapImport_OP(Operator):
                 progress = (i/((len(ObjectList))-1))
                 sys.stdout.write("Importing... ({0}%) {1}...\n".format(round(progress*100,2),AName))
                 try:
-                    bpy.ops.import_scene.cast(filepath = bpy.path.abspath(bpy.data.scenes[0].props.model_directory + "%s//%s_LOD0.cast" % (AName,AName)))
+                    bpy.ops.import_scene.cast(filepath = bpy.path.abspath(user_prefs.model_path + "%s//%s_LOD0.cast" % (AName,AName)))
                 except:
                     print('Error loading %s.cast' % (AName))
-                    bpy.data.collections.new(AName)
-                    continue
+                    PlaceholderCol = bpy.data.collections.new(AName)
+                    AssetCollection.children.link(PlaceholderCol)
                 collections[AName] = bpy.context.view_layer.active_layer_collection.collection.children[-1]
 
 
