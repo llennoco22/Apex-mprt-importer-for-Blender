@@ -15,7 +15,7 @@ Import Apex legends mprt files exported from Legion.
 9. When the map is imported it will be very large, increase the view clip distance and zoom out to see map.
 10. Enjoy.
 
-[Video tutorial](https://drive.google.com/file/d/1ApByE0p5MzVV95dUsQ0seciCA7Cl5WFZ/view?usp=sharing)
+[Video Tutorial here](https://drive.google.com/file/d/1ApByE0p5MzVV95dUsQ0seciCA7Cl5WFZ/view?usp=sharing)
 
 
 ![e02234fb1e88a9750a59ed33656547f5](https://user-images.githubusercontent.com/38115052/143941621-03ecee92-d015-4133-9c09-cf6014160c9c.png)
