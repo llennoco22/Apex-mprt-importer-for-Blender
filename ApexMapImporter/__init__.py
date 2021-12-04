@@ -16,7 +16,7 @@ bl_info = {
     "author" : "Ed O'Connell, Andrew Simon",
     "description" : "",
     "blender" : (2, 80, 0),
-    "version" : (0, 0, 1),
+    "version" : (1, 0, 3),
     "location" : "",
     "warning" : "",
     "category" : "Object"
