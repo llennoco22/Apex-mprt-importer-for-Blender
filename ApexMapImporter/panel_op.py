@@ -77,10 +77,9 @@ class MapImport_OP(Operator):
                 AName = ObjectList[i]
                 progress = (i/((len(ObjectList))-1))
                 sys.stdout.write("Importing... ({0}%) {1}...\n".format(round(progress*100,2),AName))
-                try:
-                    bpy.ops.import_scene.cast(filepath = bpy.path.abspath(user_prefs.model_path + "%s//%s_LOD0.cast" % (AName,AName)))
-                except:
-                    print('Error loading %s.cast' % (AName))
+                bpy.ops.import_scene.cast(filepath = bpy.path.abspath(user_prefs.model_path + "%s//%s_LOD0.cast" % (AName,AName)))
+                if os.path.isfile(bpy.path.abspath(user_prefs.model_path + "%s//%s_LOD0.cast" % (AName,AName))) == False:
+                    print('Error, missing file %s.cast' % (AName))
                     PlaceholderCol = bpy.data.collections.new(AName)
                     AssetCollection.children.link(PlaceholderCol)
                 collections[AName] = bpy.context.view_layer.active_layer_collection.collection.children[-1]
